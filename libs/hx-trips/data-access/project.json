@@ -1,0 +1,37 @@
+{
+  "name": "hx-trips-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/hx-trips/data-access/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/hx-trips/data-access",
+        "tsConfig": "libs/hx-trips/data-access/tsconfig.lib.json",
+        "packageJson": "libs/hx-trips/data-access/package.json",
+        "main": "libs/hx-trips/data-access/src/index.ts",
+        "assets": ["libs/hx-trips/data-access/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/hx-trips/data-access/**/*.ts",
+          "libs/hx-trips/data-access/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/hx-trips/data-access/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-trips", "data-access"]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "hx-jobs-feature",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/hx-jobs/feature/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/hx-jobs/feature",
+        "tsConfig": "libs/hx-jobs/feature/tsconfig.lib.json",
+        "packageJson": "libs/hx-jobs/feature/package.json",
+        "main": "libs/hx-jobs/feature/src/index.ts",
+        "assets": ["libs/hx-jobs/feature/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/hx-jobs/feature/**/*.ts",
+          "libs/hx-jobs/feature/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/hx-jobs/feature/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-jobs", "feature"]
+}

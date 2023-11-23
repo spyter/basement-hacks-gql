@@ -1,0 +1,55 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@bh/hx-admin/data-access": ["libs/hx-admin/data-access/src/index.ts"],
+      "@bh/hx-admin/feature": ["libs/hx-admin/feature/src/index.ts"],
+      "@bh/hx-admin/shared": ["libs/hx-admin/shared/src/index.ts"],
+      "@bh/hx-analytics/data-access": [
+        "libs/hx-analytics/data-access/src/index.ts"
+      ],
+      "@bh/hx-analytics/feature": ["libs/hx-analytics/feature/src/index.ts"],
+      "@bh/hx-analytics/shared": ["libs/hx-analytics/shared/src/index.ts"],
+      "@bh/hx-bills/data-access": ["libs/hx-bills/data-access/src/index.ts"],
+      "@bh/hx-bills/feature": ["libs/hx-bills/feature/src/index.ts"],
+      "@bh/hx-bills/shared": ["libs/hx-bills/shared/src/index.ts"],
+      "@bh/hx-calls/data-access": ["libs/hx-calls/data-access/src/index.ts"],
+      "@bh/hx-calls/feature": ["libs/hx-calls/feature/src/index.ts"],
+      "@bh/hx-calls/shared": ["libs/hx-calls/shared/src/index.ts"],
+      "@bh/hx-iam/data-access": ["libs/hx-iam/data-access/src/index.ts"],
+      "@bh/hx-iam/feature": ["libs/hx-iam/feature/src/index.ts"],
+      "@bh/hx-iam/shared": ["libs/hx-iam/shared/src/index.ts"],
+      "@bh/hx-jobs/data-access": ["libs/hx-jobs/data-access/src/index.ts"],
+      "@bh/hx-jobs/feature": ["libs/hx-jobs/feature/src/index.ts"],
+      "@bh/hx-jobs/shared": ["libs/hx-jobs/shared/src/index.ts"],
+      "@bh/hx-trips/data-access": ["libs/hx-trips/data-access/src/index.ts"],
+      "@bh/hx-trips/feature": ["libs/hx-trips/feature/src/index.ts"],
+      "@bh/hx-trips/shared": ["libs/hx-trips/shared/src/index.ts"],
+      "@bh/hx-web/shell/feature": ["libs/hx-web/shell/feature/src/index.ts"],
+      "@bh/hx-web/shell/ui": ["libs/hx-web/shell/ui/src/index.ts"],
+      "@bh/shared/api/data-access": [
+        "libs/shared/api/data-access/src/index.ts"
+      ],
+      "@bh/shared/api/utils": ["libs/shared/api/utils/src/index.ts"],
+      "@bh/shared/web/data-access": [
+        "libs/shared/web/data-access/src/index.ts"
+      ],
+      "@bh/shared/web/ui": ["libs/shared/web/ui/src/index.ts"],
+      "@bh/shared/web/utils": ["libs/shared/web/utils/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

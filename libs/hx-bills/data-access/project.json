@@ -1,0 +1,37 @@
+{
+  "name": "hx-bills-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/hx-bills/data-access/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/hx-bills/data-access",
+        "tsConfig": "libs/hx-bills/data-access/tsconfig.lib.json",
+        "packageJson": "libs/hx-bills/data-access/package.json",
+        "main": "libs/hx-bills/data-access/src/index.ts",
+        "assets": ["libs/hx-bills/data-access/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/hx-bills/data-access/**/*.ts",
+          "libs/hx-bills/data-access/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/hx-bills/data-access/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-bills", "data-access"]
+}

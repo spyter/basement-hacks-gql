@@ -1,0 +1,57 @@
+{
+  "name": "hx-jobs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hx-jobs/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/hx-jobs",
+        "main": "apps/hx-jobs/src/main.ts",
+        "tsConfig": "apps/hx-jobs/tsconfig.app.json",
+        "assets": ["apps/hx-jobs/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/hx-jobs/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "hx-jobs:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hx-jobs:build:development"
+        },
+        "production": {
+          "buildTarget": "hx-jobs:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/hx-jobs/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/hx-jobs/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-jobs"]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "hx-trips",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hx-trips/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/hx-trips",
+        "main": "apps/hx-trips/src/main.ts",
+        "tsConfig": "apps/hx-trips/tsconfig.app.json",
+        "assets": ["apps/hx-trips/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/hx-trips/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "hx-trips:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hx-trips:build:development"
+        },
+        "production": {
+          "buildTarget": "hx-trips:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/hx-trips/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/hx-trips/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-trips"]
+}

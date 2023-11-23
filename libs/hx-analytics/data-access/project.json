@@ -1,0 +1,37 @@
+{
+  "name": "hx-analytics-data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/hx-analytics/data-access/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/hx-analytics/data-access",
+        "tsConfig": "libs/hx-analytics/data-access/tsconfig.lib.json",
+        "packageJson": "libs/hx-analytics/data-access/package.json",
+        "main": "libs/hx-analytics/data-access/src/index.ts",
+        "assets": ["libs/hx-analytics/data-access/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/hx-analytics/data-access/**/*.ts",
+          "libs/hx-analytics/data-access/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/hx-analytics/data-access/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-analytics", "data-access"]
+}

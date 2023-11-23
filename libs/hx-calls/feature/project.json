@@ -1,0 +1,37 @@
+{
+  "name": "hx-calls-feature",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/hx-calls/feature/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/hx-calls/feature",
+        "tsConfig": "libs/hx-calls/feature/tsconfig.lib.json",
+        "packageJson": "libs/hx-calls/feature/package.json",
+        "main": "libs/hx-calls/feature/src/index.ts",
+        "assets": ["libs/hx-calls/feature/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/hx-calls/feature/**/*.ts",
+          "libs/hx-calls/feature/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/hx-calls/feature/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-calls", "feature"]
+}

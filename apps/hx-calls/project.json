@@ -1,0 +1,57 @@
+{
+  "name": "hx-calls",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hx-calls/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/hx-calls",
+        "main": "apps/hx-calls/src/main.ts",
+        "tsConfig": "apps/hx-calls/tsconfig.app.json",
+        "assets": ["apps/hx-calls/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/hx-calls/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "hx-calls:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hx-calls:build:development"
+        },
+        "production": {
+          "buildTarget": "hx-calls:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/hx-calls/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/hx-calls/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-calls"]
+}

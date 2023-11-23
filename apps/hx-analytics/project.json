@@ -1,0 +1,57 @@
+{
+  "name": "hx-analytics",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hx-analytics/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/hx-analytics",
+        "main": "apps/hx-analytics/src/main.ts",
+        "tsConfig": "apps/hx-analytics/tsconfig.app.json",
+        "assets": ["apps/hx-analytics/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/hx-analytics/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "hx-analytics:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hx-analytics:build:development"
+        },
+        "production": {
+          "buildTarget": "hx-analytics:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/hx-analytics/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/hx-analytics/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-analytics"]
+}

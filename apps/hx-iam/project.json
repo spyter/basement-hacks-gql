@@ -1,0 +1,57 @@
+{
+  "name": "hx-iam",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hx-iam/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/hx-iam",
+        "main": "apps/hx-iam/src/main.ts",
+        "tsConfig": "apps/hx-iam/tsconfig.app.json",
+        "assets": ["apps/hx-iam/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/hx-iam/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "hx-iam:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hx-iam:build:development"
+        },
+        "production": {
+          "buildTarget": "hx-iam:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/hx-iam/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/hx-iam/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-iam"]
+}

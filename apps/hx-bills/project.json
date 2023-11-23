@@ -1,0 +1,57 @@
+{
+  "name": "hx-bills",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/hx-bills/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/hx-bills",
+        "main": "apps/hx-bills/src/main.ts",
+        "tsConfig": "apps/hx-bills/tsconfig.app.json",
+        "assets": ["apps/hx-bills/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/hx-bills/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "hx-bills:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "hx-bills:build:development"
+        },
+        "production": {
+          "buildTarget": "hx-bills:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/hx-bills/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/hx-bills/jest.config.ts"
+      }
+    }
+  },
+  "tags": ["hx-bills"]
+}
